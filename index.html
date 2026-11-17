@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grill House Restaurant & Cafe | Hurghada</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0a',
+                            card: '#161616',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            accent: '#c53030'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter & Cairo for Arabic -->
+    <link rel="icon" type="image/png" href="ghrac.png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+        }
+
+        [dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.85)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .about-bg {
+            background: linear-gradient(rgba(22, 22, 22, 0.9), rgba(22, 22, 22, 0.95)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-gray-100 antialiased selection:bg-brand-gold selection:text-black">
+
+    <!-- Notification / Message Box -->
+    <div id="notification"
+        class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300 translate-y-10 opacity-0 bg-brand-gold text-black font-semibold px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="notification-text">Success message</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-black font-bold text-xl shadow-lg">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-wider text-white" data-i18n="brand_name">Grill House</span>
+                    <span class="block text-xs text-brand-gold uppercase tracking-widest"
+                        data-i18n="brand_sub">Restaurant & Cafe</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#about" class="hover:text-brand-gold transition-colors" data-i18n="nav_about">About</a>
+                <a href="#menu" class="hover:text-brand-gold transition-colors" data-i18n="nav_menu">Menu</a>
+                <a href="#gallery" class="hover:text-brand-gold transition-colors" data-i18n="nav_gallery">Gallery</a>
+                <a href="#reviews" class="hover:text-brand-gold transition-colors" data-i18n="nav_reviews">Reviews</a>
+                <a href="#reservation" class="hover:text-brand-gold transition-colors" data-i18n="nav_book">Book a
+                    Table</a>
+                <a href="#contact" class="hover:text-brand-gold transition-colors" data-i18n="nav_contact">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle"
+                    class="bg-white/10 hover:bg-white/20 border border-white/20 text-brand-gold px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="lang-label">العربية</span>
+                </button>
+
+                <a href="tel:01000490031"
+                    class="hidden sm:flex items-center gap-2 text-brand-gold border border-brand-gold/40 px-4 py-2 rounded-full text-sm font-semibold hover:bg-brand-gold hover:text-black transition-all">
+                    <i class="fa-solid fa-phone"></i> 010 00490031
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-white focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-card border-b border-white/10 px-6 py-4 space-y-3">
+            <a href="#about" class="block text-base hover:text-brand-gold transition-colors"
+                data-i18n="nav_about">About</a>
+            <a href="#menu" class="block text-base hover:text-brand-gold transition-colors"
+                data-i18n="nav_menu">Menu</a>
+            <a href="#gallery" class="block text-base hover:text-brand-gold transition-colors"
+                data-i18n="nav_gallery">Gallery</a>
+            <a href="#reviews" class="block text-base hover:text-brand-gold transition-colors"
+                data-i18n="nav_reviews">Reviews</a>
+            <a href="#reservation" class="block text-base hover:text-brand-gold transition-colors"
+                data-i18n="nav_book">Book a Table</a>
+            <a href="#contact" class="block text-base hover:text-brand-gold transition-colors"
+                data-i18n="nav_contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+        class="hero-bg min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 text-center relative">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <!-- Rating Badge -->
+            <div
+                class="inline-flex items-center gap-2 bg-black/70 border border-brand-gold/30 px-4 py-2 rounded-full text-brand-gold text-sm font-medium backdrop-blur-md shadow-lg">
+                <div class="flex items-center text-yellow-400 gap-1">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="font-bold text-white">4.8</span>
+                </div>
+                <span class="text-gray-400">|</span>
+                <span data-i18n="hero_reviews">2,810+ Google Reviews</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight"
+                data-i18n="hero_title">
+                Authentic Flavors & <span class="text-brand-gold">Prime Grills</span> in Hurghada
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-light" data-i18n="hero_desc">
+                Experience the finest juicy meats, fresh seafood, and cozy cafe vibes right on Sheraton Old Road.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="#reservation"
+                    class="w-full sm:w-auto bg-brand-gold text-black px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-brand-gold/90 transition-all text-center"
+                    data-i18n="btn_book">
+                    Book a Table Now
+                </a>
+                <a href="#menu"
+                    class="w-full sm:w-auto bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-bold backdrop-blur-md hover:bg-white/20 transition-all text-center"
+                    data-i18n="btn_menu">
+                    Explore Menu (E£200–400)
+                </a>
+            </div>
+
+            <!-- Highlights Quick Strip -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-12 max-w-3xl mx-auto">
+                <div class="bg-black/60 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                    <i class="fa-solid fa-utensils text-brand-gold text-xl mb-1"></i>
+                    <h3 class="font-semibold text-sm" data-i18n="feat_1">Dine-In & Delivery</h3>
+                </div>
+                <div class="bg-black/60 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                    <i class="fa-solid fa-clock text-brand-gold text-xl mb-1"></i>
+                    <h3 class="font-semibold text-sm" data-i18n="feat_2">Open till 1:00 AM</h3>
+                </div>
+                <div class="bg-black/60 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                    <i class="fa-solid fa-mug-hot text-brand-gold text-xl mb-1"></i>
+                    <h3 class="font-semibold text-sm" data-i18n="feat_3">Shisha & Ice Caffe</h3>
+                </div>
+                <div class="bg-black/60 border border-white/10 p-4 rounded-xl backdrop-blur-md">
+                    <i class="fa-solid fa-award text-brand-gold text-xl mb-1"></i>
+                    <h3 class="font-semibold text-sm" data-i18n="feat_4">Top Rated in Red Sea</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 about-bg border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-brand-gold font-semibold tracking-wider text-sm uppercase"
+                        data-i18n="about_tag">Welcome to Grill House</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white" data-i18n="about_title">
+                        Where Exceptional Food Meets Warm Hospitality in Hurghada
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="about_desc">
+                        Located conveniently on Sheraton Old Road, Grill House Restaurant & Cafe is celebrated for its
+                        welcoming atmosphere, premium ingredients, and legendary customer service. Whether you're
+                        craving authentic Egyptian street delicacies like Alex liver, mouth-watering mixed grill
+                        platters, or refreshing artisan ice coffee, our expert chefs deliver top-tier culinary
+                        satisfaction.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="text-brand-gold text-lg mt-1"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-semibold text-white" data-i18n="about_pt1_title">Dine-in & Pick-up</h4>
+                                <p class="text-xs text-gray-400" data-i18n="about_pt1_desc">Cozy indoor seating &
+                                    curbside pickup options available.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="text-brand-gold text-lg mt-1"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-semibold text-white" data-i18n="about_pt2_title">Multilingual Staff</h4>
+                                <p class="text-xs text-gray-400" data-i18n="about_pt2_desc">Friendly service team fluent
+                                    in English and ready to assist.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-white/10 flex flex-wrap gap-6 text-sm text-gray-300">
+                        <div><strong class="text-white block" data-i18n="lbl_location">Location:</strong> Sheraton Old
+                            Road, Hurghada</div>
+                        <div><strong class="text-white block" data-i18n="lbl_hours">Hours:</strong> Open daily · Closes
+                            1:00 AM</div>
+                        <div><strong class="text-white block" data-i18n="lbl_price">Price Range:</strong> E£200–400 per
+                            person</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop"
+                        alt="Mixed Grill"
+                        class="rounded-2xl shadow-2xl object-cover w-full h-48 sm:h-64 border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600&auto=format&fit=crop"
+                        alt="Restaurant Vibe"
+                        class="rounded-2xl shadow-2xl object-cover w-full h-48 sm:h-64 border border-white/10 mt-6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section with Filters -->
+    <section id="menu" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <span class="text-brand-gold font-semibold tracking-wider text-sm uppercase"
+                    data-i18n="menu_tag">Culinary Excellence</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white" data-i18n="menu_title">Our Delicious Menu</h2>
+                <p class="text-gray-400" data-i18n="menu_subtitle">Hand-picked specialties loved by thousands of local
+                    and international visitors.</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterMenu('all')"
+                    class="menu-tab active bg-brand-gold text-black px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-md"
+                    data-i18n="cat_all">All Items</button>
+                <button onclick="filterMenu('grills')"
+                    class="menu-tab bg-brand-card border border-white/10 text-white hover:border-brand-gold px-6 py-2.5 rounded-full font-bold text-sm transition-all"
+                    data-i18n="cat_grills">Grills & Kebab</button>
+                <button onclick="filterMenu('egyptian')"
+                    class="menu-tab bg-brand-card border border-white/10 text-white hover:border-brand-gold px-6 py-2.5 rounded-full font-bold text-sm transition-all"
+                    data-i18n="cat_egyptian">Alex Liver & Tagines</button>
+                <button onclick="filterMenu('cafe')"
+                    class="menu-tab bg-brand-card border border-white/10 text-white hover:border-brand-gold px-6 py-2.5 rounded-full font-bold text-sm transition-all"
+                    data-i18n="cat_cafe">Ice Caffe & Drinks</button>
+                <button onclick="filterMenu('seafood')"
+                    class="menu-tab bg-brand-card border border-white/10 text-white hover:border-brand-gold px-6 py-2.5 rounded-full font-bold text-sm transition-all"
+                    data-i18n="cat_seafood">Seafood</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="menu-item bg-brand-card rounded-2xl overflow-hidden border border-white/10 shadow-xl hover:border-brand-gold/50 transition-all group"
+                    data-category="grills">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop"
+                            alt="Mix Grill"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-3 right-3 bg-brand-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase shadow"
+                            data-i18n="badge_popular">Popular</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white" data-i18n="item1_title">Mix Grill Platter</h3>
+                            <span class="text-brand-gold font-bold">E£320</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="item1_desc">Generous assortment of juicy skewered
+                            kofta, tender shish tawook, and perfectly grilled chops seasoned with signature spices.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-item bg-brand-card rounded-2xl overflow-hidden border border-white/10 shadow-xl hover:border-brand-gold/50 transition-all group"
+                    data-category="egyptian">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600&auto=format&fit=crop"
+                            alt="Alex Liver"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-3 right-3 bg-brand-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase shadow"
+                            data-i18n="badge_chef">Chef's Pick</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white" data-i18n="item2_title">Alexandrian Liver</h3>
+                            <span class="text-brand-gold font-bold">E£220</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="item2_desc">Authentic Egyptian style tender liver
+                            sautéed with fresh garlic, green peppers, and aromatic oriental spices.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item bg-brand-card rounded-2xl overflow-hidden border border-white/10 shadow-xl hover:border-brand-gold/50 transition-all group"
+                    data-category="grills">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?q=80&w=600&auto=format&fit=crop"
+                            alt="Kebab"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-3 right-3 bg-brand-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase shadow"
+                            data-i18n="badge_must">Must Try</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white" data-i18n="item3_title">Signature Kebab</h3>
+                            <span class="text-brand-gold font-bold">E£380</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="item3_desc">Premium cuts of succulent meat grilled
+                            over natural wood charcoal to absolute perfection, tender and rich in flavor.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item bg-brand-card rounded-2xl overflow-hidden border border-white/10 shadow-xl hover:border-brand-gold/50 transition-all group"
+                    data-category="egyptian">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?q=80&w=600&auto=format&fit=crop"
+                            alt="Tagine"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-3 right-3 bg-white/20 text-white font-bold text-xs px-3 py-1 rounded-full uppercase backdrop-blur-md shadow"
+                            data-i18n="badge_trad">Traditional</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white" data-i18n="item4_title">Oriental Tagine</h3>
+                            <span class="text-brand-gold font-bold">E£260</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="item4_desc">Slow-cooked savory meat or vegetables
+                            baked in a traditional clay tagine with rich tomato sauce and herbs.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item bg-brand-card rounded-2xl overflow-hidden border border-white/10 shadow-xl hover:border-brand-gold/50 transition-all group"
+                    data-category="cafe">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop"
+                            alt="Ice Caffe"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-3 right-3 bg-brand-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase shadow"
+                            data-i18n="badge_cafe">Cafe Special</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white" data-i18n="item5_title">Signature Ice Caffe</h3>
+                            <span class="text-brand-gold font-bold">E£110</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="item5_desc">Refreshing blended iced coffee with
+                            smooth cream, perfect for warm Red Sea evenings on the terrace.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-item bg-brand-card rounded-2xl overflow-hidden border border-white/10 shadow-xl hover:border-brand-gold/50 transition-all group"
+                    data-category="seafood">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=600&auto=format&fit=crop"
+                            alt="Seafood"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span
+                            class="absolute top-3 right-3 bg-white/20 text-white font-bold text-xs px-3 py-1 rounded-full uppercase backdrop-blur-md shadow"
+                            data-i18n="badge_fresh">Fresh Catch</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white" data-i18n="item6_title">Red Sea Seafood Grill</h3>
+                            <span class="text-brand-gold font-bold">E£390</span>
+                        </div>
+                        <p class="text-gray-400 text-sm" data-i18n="item6_desc">Freshly caught local fish and shrimp
+                            grilled with lemon, garlic, and herbs celebrating Hurghada's coastal bounty.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="py-20 bg-brand-card border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-gold font-semibold tracking-wider text-sm uppercase" data-i18n="gal_tag">Visual
+                    Tour</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white" data-i18n="gal_title">Photo Gallery</h2>
+                <p class="text-gray-400" data-i18n="gal_subtitle">A glimpse into our ambiance, delicious dishes, and
+                    unforgettable moments.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="overflow-hidden rounded-2xl border border-white/10 h-48 sm:h-64 group shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop"
+                        alt="Gallery 1"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-white/10 h-48 sm:h-64 group shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop"
+                        alt="Gallery 2"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-white/10 h-48 sm:h-64 group shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop"
+                        alt="Gallery 3"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-white/10 h-48 sm:h-64 group shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop"
+                        alt="Gallery 4"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-gold font-semibold tracking-wider text-sm uppercase" data-i18n="rev_tag">Guest
+                    Experiences</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white" data-i18n="rev_title">Loved by Thousands Worldwide
+                </h2>
+                <div class="flex items-center justify-center gap-2 text-yellow-400">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-white font-bold ml-2">4.8 / 5.0 (2,810 Reviews)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div
+                    class="bg-brand-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between shadow-xl">
+                    <div class="space-y-4">
+                        <div class="text-yellow-400 flex gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic text-sm leading-relaxed" data-i18n="rev1_text">
+                            "The food is always very good and well priced! Great portion sizes and delicious. Shout out
+                            to Ahmed for being so attentive and kind - he also speaks great English!"
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-white/10 flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold">
+                            S</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Sofia</h4>
+                            <span class="text-xs text-gray-400" data-i18n="rev1_sub">Local Guide · 32 Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div
+                    class="bg-brand-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between shadow-xl">
+                    <div class="space-y-4">
+                        <div class="text-yellow-400 flex gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic text-sm leading-relaxed" data-i18n="rev2_text">
+                            "Absolutely amazing dining experience at Grill House Restaurant & Cafe! The food was
+                            incredibly delicious and beautifully presented. The mixed grill platter was generous and
+                            perfectly cooked."
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-white/10 flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold">
+                            C</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Calla WEI</h4>
+                            <span class="text-xs text-gray-400" data-i18n="rev_verified">Verified Diner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div
+                    class="bg-brand-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between shadow-xl">
+                    <div class="space-y-4">
+                        <div class="text-yellow-400 flex gap-1">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 italic text-sm leading-relaxed" data-i18n="rev3_text">
+                            "Ahmed Hassan is an amazing owner, he is really friendly and the food has amazingly good
+                            quality. As someone who appreciates great liver dishes, the Alex liver here is out of this
+                            world!"
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-white/10 flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold">
+                            R</div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Ruotian Li</h4>
+                            <span class="text-xs text-gray-400" data-i18n="rev_verified">Verified Diner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Reservation Form Section -->
+    <section id="reservation" class="py-20 bg-brand-card border-t border-white/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-dark rounded-3xl p-8 sm:p-12 border border-white/10 shadow-2xl">
+                <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
+                    <span class="text-brand-gold font-semibold tracking-wider text-sm uppercase"
+                        data-i18n="res_tag">Reservation</span>
+                    <h2 class="text-3xl font-bold text-white" data-i18n="res_title">Book Your Table</h2>
+                    <p class="text-gray-400 text-sm" data-i18n="res_subtitle">Secure your spot for an unforgettable
+                        dining experience in Hurghada.</p>
+                </div>
+
+                <form id="booking-form" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n="form_name">Full
+                                Name</label>
+                            <input type="text" id="name" required placeholder="Enter your name"
+                                class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n="form_phone">Phone
+                                Number</label>
+                            <input type="tel" id="phone" required placeholder="e.g. 01000490031"
+                                class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2"
+                                data-i18n="form_date">Date</label>
+                            <input type="date" id="date" required
+                                class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2"
+                                data-i18n="form_time">Time</label>
+                            <input type="time" id="time" required
+                                class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n="form_guests">Number
+                                of Guests</label>
+                            <select id="guests"
+                                class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors">
+                                <option value="1" data-i18n="opt_1">1 Person</option>
+                                <option value="2" selected data-i18n="opt_2">2 People</option>
+                                <option value="4" data-i18n="opt_4">4 People</option>
+                                <option value="6" data-i18n="opt_6">6 People</option>
+                                <option value="8+" data-i18n="opt_8">8+ People (Large Group)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2" data-i18n="form_notes">Special
+                            Requests (Optional)</label>
+                        <textarea id="notes" rows="3"
+                            placeholder="Indoor seating, outdoor terrace, shisha preference, etc."
+                            class="w-full bg-brand-card border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-brand-gold text-black font-bold py-4 rounded-xl shadow-lg hover:bg-brand-gold/90 transition-all text-base"
+                        data-i18n="form_submit">
+                        Confirm Table Reservation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Info Section -->
+    <section id="contact" class="py-20 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-brand-gold font-semibold tracking-wider text-sm uppercase"
+                        data-i18n="contact_tag">Get In Touch</span>
+                    <h2 class="text-3xl font-bold text-white" data-i18n="contact_title">Visit Grill House Today</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed" data-i18n="contact_desc">
+                        Join us on Sheraton Old Road for incredible food, relaxing shisha, and warm hospitality. We are
+                        open daily until 1:00 AM.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-card border border-white/10 flex items-center justify-center text-brand-gold text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white" data-i18n="con_addr_title">Address</h4>
+                                <p class="text-xs text-gray-400" data-i18n="con_addr_val">طريق الشيراتون القديم,
+                                    Hurghada, Red Sea Governorate</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-card border border-white/10 flex items-center justify-center text-brand-gold text-lg">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white" data-i18n="con_phone_title">Phone Number
+                                </h4>
+                                <a href="tel:01000490031" class="text-xs text-brand-gold hover:underline">010
+                                    00490031</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-card border border-white/10 flex items-center justify-center text-brand-gold text-lg">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-white" data-i18n="con_hours_title">Operating Hours
+                                </h4>
+                                <p class="text-xs text-gray-400" data-i18n="con_hours_val">Open Daily · Closes 1:00 AM
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="h-80 sm:h-96 w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
+                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop"
+                        alt="Map Location" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <a href="https://maps.google.com/?q=Grill+House+Hurghada" target="_blank"
+                            class="bg-brand-gold text-black px-6 py-3 rounded-xl font-bold shadow-2xl hover:bg-brand-gold/90 transition-all flex items-center gap-2"
+                            data-i18n="map_btn">
+                            <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-card py-12 border-t border-white/10 text-center text-sm text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-black font-bold">
+                    <i class="fa-solid fa-fire text-xs"></i>
+                </div>
+                <span class="text-white font-bold tracking-wider" data-i18n="brand_name">Grill House Restaurant &
+                    Cafe</span>
+            </div>
+            <p data-i18n="footer_rights">© 2026 Grill House Hurghada. All rights reserved. Data sourced from Google
+                Maps.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions & Translations -->
+    <script>
+        const translations = {
+            en: {
+                brand_name: "Grill House",
+                brand_sub: "Restaurant & Cafe",
+                nav_about: "About",
+                nav_menu: "Menu",
+                nav_gallery: "Gallery",
+                nav_reviews: "Reviews",
+                nav_book: "Book a Table",
+                nav_contact: "Contact",
+                hero_reviews: "2,810+ Google Reviews",
+                hero_title: "Authentic Flavors & <span class='text-brand-gold'>Prime Grills</span> in Hurghada",
+                hero_desc: "Experience the finest juicy meats, fresh seafood, and cozy cafe vibes right on Sheraton Old Road.",
+                btn_book: "Book a Table Now",
+                btn_menu: "Explore Menu (E£200–400)",
+                feat_1: "Dine-In & Delivery",
+                feat_2: "Open till 1:00 AM",
+                feat_3: "Shisha & Ice Caffe",
+                feat_4: "Top Rated in Red Sea",
+                about_tag: "Welcome to Grill House",
+                about_title: "Where Exceptional Food Meets Warm Hospitality in Hurghada",
+                about_desc: "Located conveniently on Sheraton Old Road, Grill House Restaurant & Cafe is celebrated for its welcoming atmosphere, premium ingredients, and legendary customer service. Whether you're craving authentic Egyptian street delicacies like Alex liver, mouth-watering mixed grill platters, or refreshing artisan ice coffee, our expert chefs deliver top-tier culinary satisfaction.",
+                about_pt1_title: "Dine-in & Pick-up",
+                about_pt1_desc: "Cozy indoor seating & curbside pickup options available.",
+                about_pt2_title: "Multilingual Staff",
+                about_pt2_desc: "Friendly service team fluent in English and ready to assist.",
+                lbl_location: "Location:",
+                lbl_hours: "Hours:",
+                lbl_price: "Price Range:",
+                menu_tag: "Culinary Excellence",
+                menu_title: "Our Delicious Menu",
+                menu_subtitle: "Hand-picked specialties loved by thousands of local and international visitors.",
+                cat_all: "All Items",
+                cat_grills: "Grills & Kebab",
+                cat_egyptian: "Alex Liver & Tagines",
+                cat_cafe: "Ice Caffe & Drinks",
+                cat_seafood: "Seafood",
+                badge_popular: "Popular",
+                badge_chef: "Chef's Pick",
+                badge_must: "Must Try",
+                badge_trad: "Traditional",
+                badge_cafe: "Cafe Special",
+                badge_fresh: "Fresh Catch",
+                item1_title: "Mix Grill Platter",
+                item1_desc: "Generous assortment of juicy skewered kofta, tender shish tawook, and perfectly grilled chops seasoned with signature spices.",
+                item2_title: "Alexandrian Liver",
+                item2_desc: "Authentic Egyptian style tender liver sautéed with fresh garlic, green peppers, and aromatic oriental spices.",
+                item3_title: "Signature Kebab",
+                item3_desc: "Premium cuts of succulent meat grilled over natural wood charcoal to absolute perfection, tender and rich in flavor.",
+                item4_title: "Oriental Tagine",
+                item4_desc: "Slow-cooked savory meat or vegetables baked in a traditional clay tagine with rich tomato sauce and herbs.",
+                item5_title: "Signature Ice Caffe",
+                item5_desc: "Refreshing blended iced coffee with smooth cream, perfect for warm Red Sea evenings on the terrace.",
+                item6_title: "Red Sea Seafood Grill",
+                item6_desc: "Freshly caught local fish and shrimp grilled with lemon, garlic, and herbs celebrating Hurghada's coastal bounty.",
+                gal_tag: "Visual Tour",
+                gal_title: "Photo Gallery",
+                gal_subtitle: "A glimpse into our ambiance, delicious dishes, and unforgettable moments.",
+                rev_tag: "Guest Experiences",
+                rev_title: "Loved by Thousands Worldwide",
+                rev1_text: "\"The food is always very good and well priced! Great portion sizes and delicious. Shout out to Ahmed for being so attentive and kind - he also speaks great English!\"",
+                rev1_sub: "Local Guide · 32 Reviews",
+                rev2_text: "\"Absolutely amazing dining experience at Grill House Restaurant & Cafe! The food was incredibly delicious and beautifully presented. The mixed grill platter was generous and perfectly cooked.\"",
+                rev3_text: "\"Ahmed Hassan is an amazing owner, he is really friendly and the food has amazingly good quality. As someone who appreciates great liver dishes, the Alex liver here is out of this world!\"",
+                rev_verified: "Verified Diner",
+                res_tag: "Reservation",
+                res_title: "Book Your Table",
+                res_subtitle: "Secure your spot for an unforgettable dining experience in Hurghada.",
+                form_name: "Full Name",
+                form_phone: "Phone Number",
+                form_date: "Date",
+                form_time: "Time",
+                form_guests: "Number of Guests",
+                opt_1: "1 Person",
+                opt_2: "2 People",
+                opt_4: "4 People",
+                opt_6: "6 People",
+                opt_8: "8+ People (Large Group)",
+                form_notes: "Special Requests (Optional)",
+                form_submit: "Confirm Table Reservation",
+                contact_tag: "Get In Touch",
+                contact_title: "Visit Grill House Today",
+                contact_desc: "Join us on Sheraton Old Road for incredible food, relaxing shisha, and warm hospitality. We are open daily until 1:00 AM.",
+                con_addr_title: "Address",
+                con_addr_val: "Sheraton Old Road, Hurghada, Red Sea Governorate",
+                con_phone_title: "Phone Number",
+                con_hours_title: "Operating Hours",
+                con_hours_val: "Open Daily · Closes 1:00 AM",
+                map_btn: "Open in Google Maps",
+                footer_rights: "© 2026 Grill House Hurghada. All rights reserved. Data sourced from Google Maps."
+            },
+            ar: {
+                brand_name: "جريل هاوس",
+                brand_sub: "مطعم وكافيه",
+                nav_about: "عن المطعم",
+                nav_menu: "قائمة الطعام",
+                nav_gallery: "الصور",
+                nav_reviews: "التقييمات",
+                nav_book: "حجز طاولة",
+                nav_contact: "اتصل بنا",
+                hero_reviews: "أكثر من 2,810 تقييم على جوجل",
+                hero_title: "أشهى المأكولات وألذ <span class='text-brand-gold'>المشويات</span> في الغردقة",
+                hero_desc: "استمتع بألذ اللحوم الطازجة، المأكولات البحرية، وأجواء الكافيه الممتازة في طريق الشيراتون القديم.",
+                btn_book: "احجز طاولتك الآن",
+                btn_menu: "استعرض القائمة (200-400 جنيه)",
+                feat_1: "تناول بالمطعم وتوصيل",
+                feat_2: "مفتوح حتى 1:00 صباحاً",
+                feat_3: "شيشة وآيس كافيه",
+                feat_4: "الأعلى رتبة في البحر الأحمر",
+                about_tag: "مرحباً بكم في جريل هاوس",
+                about_title: "حيث يلتقي الطعام الاستثنائي بحسن الضيافة في الغردقة",
+                about_desc: "يقع مطعم وكافيه جريل هاوس في موقع متميز بطريق الشيراتون القديم، ويشتهر بأجوائه الترحيبية، ومكوناته الممتازة، وخدمة العملاء الأسطورية. وسواء كنت تشتهي الأكلات الشرقية الأصيلة مثل كبدة إسكندراني، أو أطباق المشويات المشكلة، أو الآيس كافيه المنعش، فإن طهاة المحترفين لدينا يقدمون لك أقصى درجات الرضا.",
+                about_pt1_title: "تناول بالمطعم واستلام سريع",
+                about_pt1_desc: "أماكن جلوس داخلية مريحة وخدمة استلام الطلبات متاحة.",
+                about_pt2_title: "فريق عمل متعدد اللغات",
+                about_pt2_desc: "فريق خدمة ودود يجيد اللغة الإنجليزية وجاهز للمساعدة دائماً.",
+                lbl_location: "الموقع:",
+                lbl_hours: "مواعيد العمل:",
+                lbl_price: "متوسط الأسعار:",
+                menu_tag: "التميز في الطهي",
+                menu_title: "قائمة الطعام الشهية",
+                menu_subtitle: "تخصصات مختارة بعناية ينال إعجاب آلاف الزوار المحليين والدوليين.",
+                cat_all: "جميع الأصناف",
+                cat_grills: "المشويات والكباب",
+                cat_egyptian: "كبدة إسكندراني والطواجن",
+                cat_cafe: "آيس كافيه والمشروبات",
+                cat_seafood: "مأكولات بحرية",
+                badge_popular: "الأكثر طلباً",
+                badge_chef: "اختيار الشيف",
+                badge_must: "تجربة لا تفوت",
+                badge_trad: "تقليدي أصيل",
+                badge_cafe: "مميز الكافيه",
+                badge_fresh: "صيد طازج",
+                item1_title: "طبق مشويات مشكلة",
+                item1_desc: "تشكيلة غنية من سيخ الكفته الغنية، الشيش طاووق الطري، والريش المشوية بعناية على الفحم مع التوابل الخاصة.",
+                item2_title: "كبدة إسكندراني",
+                item2_desc: "كبدة طرية ومتبلة بالطريقة الإسكندرانية الأصيلة مع الثوم الطازج والفلفل الأخضر والتوابل الشرقية العطرية.",
+                item3_title: "كباب جريل هاوس المميز",
+                item3_desc: "قطع فاخرة من اللحم الطري المشوي فوق الفحم الطبيعي لدرجة الكمال، غنية بالنكهة والمذاق الرائع.",
+                item4_title: "طواجن شرقية",
+                item4_desc: "لحوم أو خضروات مطهوة ببطء في طاجن فخاري تقليدي مع صلصة الطماطم الغنية والأعشاب.",
+                item5_title: "آيس كافيه المميز",
+                item5_desc: "قهوة مثلجة ممزوجة ومنعشة مع الكريمة الناعمة، مثالية لأمسيات البحر الأحمر الدافئة في التراس.",
+                item6_title: "مشويات مأكولات البحر الأحمر",
+                item6_desc: "أسماك وجمبري طازجة يتم صيدها محلياً وشيها بالليمون والثوم والأعشاب احتفالاً بسواحل الغردقة.",
+                gal_tag: "جولة بصرية",
+                gal_title: "معرض الصور",
+                gal_subtitle: "لمحة عن أجواء مطعمنا، أطباقنا الشهية، ولحظاتكم التي لا تُنسى.",
+                rev_tag: "تجارب الضيوف",
+                rev_title: "يحبه الآلاف حول العالم",
+                rev1_text: "\"الطعام دائماً ممتاز وبأسعار مناسبة جداً! أحجام الوجبات كبيرة ولذيذة. كل الشكر للأستاذ أحمد على اهتمامه ولطفه الكبير، وهو يتحدث الإنجليزية بطلاقة!\"",
+                rev1_sub: "مرشد محلي · 32 تقييم",
+                rev2_text: "\"تجربة طعام مذهلة للغاية في مطعم وكافيه جريل هاوس! كان الطعام لذيذًا للغاية ومقدمًا بشكل جميل. طبق المشويات المشكلة كان وفيرًا ومطهوًا بشكل مثالي.\"",
+                rev3_text: "\"أحمد حسن مالك مذهل حقًا، فهو ودود للغاية وجودة الطعام عالية بشكل مذهل. كشخص يقدر أطباق الكبدة الرائعة، كبدة إسكندراني هنا تعد الأفضل على الإطلاق!\"",
+                rev_verified: "زائر موثق",
+                res_tag: "الحجز",
+                res_title: "احجز طاولتك الآن",
+                res_subtitle: "احجز مكانك مسبقاً لتجربة طعام لا تُنسى في الغردقة.",
+                form_name: "الاسم الكامل",
+                form_phone: "رقم الهاتف",
+                form_date: "التاريخ",
+                form_time: "الوقت",
+                form_guests: "عدد الأفراد",
+                opt_1: "فرد واحد",
+                opt_2: "شخصين",
+                opt_4: "4 أفراد",
+                opt_6: "6 أفراد",
+                opt_8: "8+ أفراد (مجموعة كبيرة)",
+                form_notes: "طلبات خاصة (اختياري)",
+                form_submit: "تأكيد حجز الطاولة",
+                contact_tag: "تواصل معنا",
+                contact_title: "زر جريل هاوس اليوم",
+                contact_desc: "انضم إلينا في طريق الشيراتون القديم لتناول طعام لا يُنسى، شيشة مريحة، وحسن ضيافة دافئ. نحن مفتوحون يومياً حتى الساعة 1:00 صباحاً.",
+                con_addr_title: "العنوان",
+                con_addr_val: "طريق الشيراتون القديم، الغردقة، محافظة البحر الأحمر",
+                con_phone_title: "رقم الهاتف",
+                con_hours_title: "ساعات العمل",
+                con_hours_val: "مفتوح يومياً · يغلق الساعة 1:00 ص",
+                map_btn: "فتح في خرائط جوجل",
+                footer_rights: "© 2026 جريل هاوس الغردقة. جميع الحقوق محفوظة. البيانات مأخوذة من خرائط جوجل."
+            }
+        };
+
+        let currentLang = 'en';
+
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langLabel = document.getElementById('lang-label');
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            langLabel.textContent = currentLang === 'en' ? 'العربية' : 'English';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            document.getElementById('name').placeholder = currentLang === 'ar' ? 'أدخل اسمك الكريم' : 'Enter your name';
+            document.getElementById('phone').placeholder = currentLang === 'ar' ? 'مثال: 01000490031' : 'e.g. 01000490031';
+            document.getElementById('notes').placeholder = currentLang === 'ar' ? 'جلسة داخلية، تراس خارجي، تفضيل الشيشة، إلخ.' : 'Indoor seating, outdoor terrace, shisha preference, etc.';
+        });
+
+        function filterMenu(category) {
+            const tabs = document.querySelectorAll('.menu-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-gold', 'text-black', 'shadow-md');
+                tab.classList.add('bg-brand-card', 'border', 'border-white/10', 'text-white');
+            });
+            event.target.classList.remove('bg-brand-card', 'border', 'border-white/10', 'text-white');
+            event.target.classList.add('bg-brand-gold', 'text-black', 'shadow-md');
+
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const textEl = document.getElementById('notification-text');
+            textEl.textContent = message;
+            notification.classList.remove('hidden', 'translate-y-10', 'opacity-0');
+            notification.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                notification.classList.remove('translate-y-0', 'opacity-100');
+                notification.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => notification.classList.add('hidden'), 300);
+            }, 4000);
+        }
+
+        const bookingForm = document.getElementById('booking-form');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            const msg = currentLang === 'ar'
+                ? `شكراً لك ${name}! تم تأكيد حجز الطاولة يوم ${date} الساعة ${time}.`
+                : `Thank you ${name}! Table reserved for ${date} at ${time}.`;
+
+            showNotification(msg);
+            bookingForm.reset();
+        });
+    </script>
+</body>
+
+</html>
